@@ -1,0 +1,5 @@
+telethon
+schedule
+pandas
+openpyxl
+python-dotenv
