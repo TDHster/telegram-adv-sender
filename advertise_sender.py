@@ -26,8 +26,8 @@ phone_number = config.get('PHONE_NUMBER')
 xls_file = config.get('XLS_FILE')
 # xls_file = 'advertize-sender.xlsx'
 # ID пользователя, от которого нужно фильтровать сообщения
-# control_user_id = int(config.get('CONTROL_USER_ID'))
-control_user_ids = [int(user_id) for user_id in config.get('CONTROL_USER_ID', '').split(',')]
+control_user_id = int(config.get('CONTROL_USER_ID'))
+# control_user_ids = [int(user_id) for user_id in config.get('CONTROL_USER_ID', '').split(',')]
 
 schedule_check_interval = int(config.get('SCHEDULE_CHECK_INTERVAL'))
 
@@ -35,8 +35,7 @@ schedule_check_interval = int(config.get('SCHEDULE_CHECK_INTERVAL'))
 # Create the client and connect
 client = TelegramClient('advertise-sender', api_id, api_hash)
 
-@client.on(events.NewMessage(from_users=control_user_ids))
-# @client.on(events.NewMessage())
+# @client.on(events.NewMessage(from_users=control_user_id)) # turn on if need upload xls
 async def handle_new_message(event):
     sender = await event.get_sender()
     chat = await event.get_chat()
@@ -123,6 +122,8 @@ async def send_message(group_name, message):
         await check_and_join_chat(group_name)
         await client.send_message(group_name, message)
         logging.warning(f"Message sent to {group_name}!")
+        await client.send_message(control_user_id, f"Adv message sent to {group_name}.", silent=True)
+
     except Exception as e:
         logging.error(f"Error while sending message to {group_name}: {e}")
 

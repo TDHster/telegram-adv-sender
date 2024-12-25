@@ -92,7 +92,7 @@ SCHEDULE_CHECK_INTERVAL=<Interval in Seconds> 30 sec ok
 Run the Bot:
 
 ```bash
-./venv/bin/python bot.py
+./venv/bin/python advertise_sender.py
 ```
 ## Usage
 Start the Bot:
@@ -107,7 +107,7 @@ Logs provide real-time feedback on the bot’s actions and any errors.
 ## Project Structure
 ```bash
 .
-├── bot.py                 # Main script for the bot
+├── advertise_sender.py                 # Main script for the bot
 ├── requirements.txt       # List of dependencies
 ├── .env                   # Environment variables
 └── README.md              # Project documentation```
