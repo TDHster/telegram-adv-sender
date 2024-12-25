@@ -74,13 +74,20 @@ XLS_FILE=<Path to Default Excel File>
 CONTROL_USER_ID=<Comma-Separated Telegram User IDs> for recieve new .xls file.
 SCHEDULE_CHECK_INTERVAL=<Interval in Seconds> 30 sec ok
 ```
-Prepare the Excel File:
+## Prepare the Excel File
 
-Sheet Schedule: Contains schedule details.
+### Sheet `Schedule`: Contains schedule details.
 
-Group	Time to send	Mon	Tue	Wed	Thu	Fri	Sat	Sun
-@group_name	10:00:00	1	0	1	0	1	0	1
-Sheet Message: Contains a single cell with the message text.
+| Group       | Time to send | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+|-------------|--------------|-----|-----|-----|-----|-----|-----|-----|
+| @group_name | 10:00:00     | 1   | 0   | 1   | 0   | 1   | 0   | 1   |
+
+### Sheet `Message`: Contains a single first cell with the message text.
+
+| Message      |
+|--------------|
+| Your message |
+
 
 Run the Bot:
 
