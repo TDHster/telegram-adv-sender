@@ -13,7 +13,8 @@ import sys
 import asyncio
 
 # Настройка логирования
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 
 # Загружаем переменные окружения из .env файла в словарь
 config = dotenv_values(".env")
@@ -104,7 +105,7 @@ async def check_and_join_chat(chat_username):
     if not is_member:
         # Если не состоим в чате, вступаем в него
         await client(JoinChannelRequest(chat))
-        logging.info(f"Вступили в чат {chat_username}")
+        logging.warning(f"Вступили в чат {chat_username}")
     else:
         logging.info(f"Уже состоим в чате {chat_username}")
 
@@ -121,7 +122,7 @@ async def send_message(group_name, message):
         #     logging.info(f"{chat.username} is not User")
         await check_and_join_chat(group_name)
         await client.send_message(group_name, message)
-        logging.info(f"Message sent to {group_name}!")
+        logging.warning(f"Message sent to {group_name}!")
     except Exception as e:
         logging.error(f"Error while sending message to {group_name}: {e}")
 
