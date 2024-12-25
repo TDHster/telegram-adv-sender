@@ -40,7 +40,8 @@ A powerful and flexible Telegram bot built with Python and the Telethon library.
 - dotenv
 - schedule
 
-All will be installed via pip requirements.txt
+_will be installed via pip install -r requirements.txt_
+
 ---
 
 ## Installation
