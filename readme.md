@@ -32,12 +32,15 @@ A powerful and flexible Telegram bot built with Python and the Telethon library.
 ## Requirements
 
 - Python 3.8 or newer
+
+### Python libraries:
 - Telethon
 - Pandas
 - OpenPyXL
 - dotenv
 - schedule
 
+All will be installed via pip requirements.txt
 ---
 
 ## Installation
