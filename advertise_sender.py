@@ -24,6 +24,8 @@ api_id = config.get('API_ID')
 api_hash = config.get('API_HASH')
 phone_number = config.get('PHONE_NUMBER')
 xls_file = config.get('XLS_FILE')
+report_to = config.get('REPORT_TO')
+
 # xls_file = 'advertize-sender.xlsx'
 # ID пользователя, от которого нужно фильтровать сообщения
 control_user_id = int(config.get('CONTROL_USER_ID'))
@@ -122,7 +124,7 @@ async def send_message(group_name, message):
         await check_and_join_chat(group_name)
         await client.send_message(group_name, message)
         logging.warning(f"Message sent to {group_name}!")
-        await client.send_message(control_user_id, f"Adv message sent to {group_name}.", silent=True)
+        await client.send_message(report_to, f"Adv message sent to {group_name}.", silent=True)
 
     except Exception as e:
         logging.error(f"Error while sending message to {group_name}: {e}")
