@@ -14,7 +14,13 @@ import asyncio
 
 # Настройка логирования
 # logging.basicConfig(level=logging.INFO)
-logging.basicConfig(level=logging.WARNING)
+# logging.basicConfig(level=logging.WARNING)
+
+logging.basicConfig(
+    level=logging.INFO,  # Уровень логирования
+    format="%(asctime)s - %(levelname)s - %(message)s",  # Формат сообщения
+    datefmt="%Y-%m-%d %H:%M:%S"  # Формат времени
+)
 
 # Загружаем переменные окружения из .env файла в словарь
 config = dotenv_values(".env")
@@ -123,11 +129,13 @@ async def send_message(group_name, message):
         #     logging.info(f"{chat.username} is not User")
         await check_and_join_chat(group_name)
         await client.send_message(group_name, message)
-        logging.warning(f"Message sent to {group_name}!")
+        logging.info(f"Message sent to {group_name}!")
         await client.send_message(report_to, f"Adv message sent to {group_name}.", silent=True)
 
     except Exception as e:
         logging.error(f"Error while sending message to {group_name}: {e}")
+        await client.send_message(report_to, f"ERROR sending to {group_name}.", silent=True)
+
 
 def load_schedule(file_path):
     try:
