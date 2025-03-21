@@ -30,7 +30,7 @@ api_id = config.get('API_ID')
 api_hash = config.get('API_HASH')
 phone_number = config.get('PHONE_NUMBER')
 xls_file = config.get('XLS_FILE')
-report_to = config.get('REPORT_TO')
+report_to = int(config.get('REPORT_TO'))
 
 # xls_file = 'advertize-sender.xlsx'
 # ID пользователя, от которого нужно фильтровать сообщения
