@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.deploy_config.sh
+deploy-sync.sh
+deploynohup.sh
+deployservice.sh
+.env
+*.xlsx

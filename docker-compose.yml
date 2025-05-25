@@ -1,0 +1,21 @@
+services:
+  adv-sender:
+    container_name: telegram-advertise-sender
+    build: .
+    # mem_limit: 256m      # max 256MB
+    # cpus: 0.5            # max 50% one CPU
+
+    # env_file
+    # - .env  # load as system env docker-compose.yml
+    volumes:
+      - ./.env:/app/.env  # because python-dotenv
+      - ./advertise-sender.xlsx:/app/advertise-sender.xlsx
+      - ./advertise-sender.session:/app/advertise-sender.session
+
+    restart: unless-stopped
+
+    logging:  # limiting logs
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
